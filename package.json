@@ -7,8 +7,8 @@
   "author": "Sajid",
   "license": "MIT",
   "scripts": {
-    "start:dev": "parcel serve ./src/index.html",
-    "build": "parcel build ./src/index.html",
+    "start:dev": "parcel serve ./src/index.html --public-url ./",
+    "build": "parcel build ./src/index.html --public-url ./",
     "predeploy": "yarn run build",
     "deploy": "gh-pages -d build"
   },
