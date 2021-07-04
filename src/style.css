@@ -50,7 +50,7 @@ header {
 }
 input[type='text'] {
   width: 100%;
-  font: 15px/24px 'Roboto', sans-serif;
+  font: 15px/24px 'Poppins', sans-serif;
   padding: 7px;
   box-sizing: border-box;
   letter-spacing: 1px;
