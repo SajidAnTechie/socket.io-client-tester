@@ -1,5 +1,8 @@
 ### Node version >= v12.20.0
 
+### Overview
+![socket-client](https://user-images.githubusercontent.com/59027889/124381956-c757b400-dce4-11eb-83b6-a3055732b503.png)
+
 ### Installation
 
 ```
