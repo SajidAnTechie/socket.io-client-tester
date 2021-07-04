@@ -1,6 +1,6 @@
 {
   "name": "socket.io-client-tool",
-  "homepage": "https://github.com/SajidAnTechie/socket.io-client-tester",
+  "homepage": "https://sajidantechie.github.io/socket.io-client-tester/",
   "version": "1.0.0",
   "description": "socket.io-client-tool",
   "main": "build/index.html",
