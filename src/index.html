@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="script.js" type="module"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Socket Client Tool</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <header class="my-2">Socket.io Client Tool</header>
+      <h4 class="my-3">Connect</h4>
+      <form connection-form class="my-3">
+        <div class="input-group">
+          <input
+            type="text"
+            name="url"
+            placeholder="eg: http://localhost:8080/"
+            local-server-url
+            required
+            class="mr-2"
+          />
+          <button type="submit" class="btn" connect-btn>Connect</button>
+        </div>
+      </form>
+      <h4 class="my-3">New Event</h4>
+      <form new-event-form class="my-3">
+        <div class="input-group">
+          <input
+            type="text"
+            name="event"
+            placeholder="Event name"
+            socket-event
+            required
+            class="mr-2"
+          />
+          <input
+            type="text"
+            name="listener"
+            placeholder="Listener name"
+            socket-listener
+            required
+            class="mr-2"
+          />
+          <button type="submit" class="btn" create-event-btn>Send</button>
+        </div>
+      </form>
+      <h4 class="my-3">JSON</h4>
+      <div
+        json-request-body
+        class="border"
+        style="max-height: 400px; overflow: auto"
+      ></div>
+      <div class="response-conatiner d-none" json-responce-conatiner>
+        <h4 class="my-3">Respone</h4>
+        <div
+          json-response-body
+          class="my-3 border"
+          style="max-height: 400px; overflow: auto"
+        ></div>
+      </div>
+    </div>
+  </body>
+</html>
