@@ -1,5 +1,6 @@
 import io from 'socket.io-client';
 import setUpEditors from './setupEditor';
+import eventOptions from './eventOptions';
 
 const event = document.querySelector('[socket-event]');
 const connectBtn = document.querySelector('[connect-btn]');
@@ -84,6 +85,25 @@ function listenEvent(socket, listenTo) {
     socket.removeListener(listenTo);
   });
 }
+
+(() => {
+  const options = [...eventOptions];
+
+  options.forEach((eve, key) => {
+    const eventName = eve.event;
+    event[key + 1] = new Option(eventName, eventName, false, false);
+  });
+})();
+
+event.addEventListener('change', (e) => {
+  const options = [...eventOptions];
+  const selectedEventValue = e.target.value;
+  const listenerIndex = options.findIndex(
+    ({ event }) => event === selectedEventValue
+  );
+
+  if (listenerIndex >= 0) listener.value = options[listenerIndex].listener;
+});
 
 function changeDom(element, content = '', styles = {}) {
   element.textContent = content;

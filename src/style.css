@@ -65,6 +65,17 @@ input[type='text']::placeholder {
   color: #999;
 }
 
+select {
+  width: 100%;
+  font: 15px/24px 'Poppins', sans-serif;
+  padding: 7px;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+  outline: none;
+  border: 1px solid #d2d2d2;
+  border-radius: 3px;
+}
+
 .btn {
   background-color: transparent;
   cursor: pointer;
