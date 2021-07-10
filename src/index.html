@@ -29,24 +29,25 @@
       <h4 class="my-3">New Event</h4>
       <form new-event-form class="my-3">
         <div class="input-group">
-          <!-- <input
-            type="text"
-            name="event"
-            placeholder="Event name"
-            socket-event
-            required
-            class="mr-2"
-          /> -->
-          <select name="event" id="event" required socket-event class="mr-2">
+          <!-- <select name="event" id="event" required socket-event class="mr-2">
             <option value="" disabled selected hidden>select an event</option>
-          </select>
+          </select> -->
+          <div class="select-container mr-2">
+            <div class="select-box">
+              <div class="options-container" option-container></div>
+              <div class="selected" socket-event>Select event</div>
+              <div class="search-box">
+                <input type="text" placeholder="Search event" search-input />
+              </div>
+            </div>
+          </div>
           <input
             type="text"
             name="listener"
             placeholder="Listener name"
             socket-listener
             required
-            class="mr-2"
+            class="mr-2 listener-input"
           />
           <button type="submit" class="btn" create-event-btn>Send</button>
         </div>
@@ -66,5 +67,8 @@
         ></div>
       </div>
     </div>
+    <template option-template>
+      <div class="option" option></div>
+    </template>
   </body>
 </html>

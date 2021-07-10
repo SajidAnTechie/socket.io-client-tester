@@ -7,4 +7,24 @@ export default [
     event: 'message',
     listener: 'reply',
   },
+  {
+    event: 'message',
+    listener: 'reply',
+  },
+  {
+    event: 'message',
+    listener: 'reply',
+  },
+  {
+    event: 'message',
+    listener: 'reply',
+  },
+  {
+    event: 'message',
+    listener: 'reply',
+  },
+  {
+    event: 'message',
+    listener: 'reply',
+  },
 ];
