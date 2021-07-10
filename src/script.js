@@ -149,9 +149,8 @@ function addClickEventListerToOptionList() {
   });
 }
 
-function findListener(eventVal) {
+function findListener(selectedEventValue) {
   const options = [...eventOptions];
-  const selectedEventValue = eventVal;
   const listenerIndex = options.findIndex(
     ({ event }) => event === selectedEventValue
   );
