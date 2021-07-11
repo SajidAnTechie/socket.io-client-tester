@@ -160,7 +160,7 @@ function findListener(selectedEventValue) {
   if (listenerIndex >= 0) listener.value = options[listenerIndex].listener;
 }
 
-export function changeDom(element, content = '', styles = {}) {
+function changeDom(element, content = '', styles = {}) {
   if (content != '') element.textContent = content;
 
   Object.assign(element.style, styles);

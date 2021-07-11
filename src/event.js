@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { changeDom } from './script';
 
 const addBtn = document.querySelector('[add-btn]');
 const newEvent = document.querySelector('[add-event-input]');
@@ -33,3 +32,9 @@ addEventForm.addEventListener('submit', async (e) => {
     newListener.value = '';
   }
 });
+
+function changeDom(element, content = '', styles = {}) {
+  if (content != '') element.textContent = content;
+
+  Object.assign(element.style, styles);
+}
