@@ -3,14 +3,13 @@
   "homepage": "https://sajidantechie.github.io/socket.io-client-tester/",
   "version": "1.0.0",
   "description": "socket.io-client-tool",
-  "main": "build/index.html",
   "author": "Sajid",
   "license": "MIT",
   "scripts": {
     "start:dev": "parcel serve ./src/*.html",
     "build": "parcel build ./src/*.html --public-url ./",
     "predeploy": "yarn run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@codemirror/basic-setup": "^0.18.2",

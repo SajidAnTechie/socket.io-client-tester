@@ -137,7 +137,7 @@ input[type='text']::placeholder {
 
 .selected::after {
   content: '';
-  background: url('arrow-down.svg');
+  background: url('./arrow-down.svg');
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
