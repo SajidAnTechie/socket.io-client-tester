@@ -6,7 +6,6 @@
 ![Screenshot 2021-07-11 at 15-09-04 Socket Client Tool](https://user-images.githubusercontent.com/59027889/125189894-1f009d00-e25a-11eb-865c-5bc8a38fab47.png)
 ![Screenshot 2021-07-11 at 09-55-16 Socket Client Tool](https://user-images.githubusercontent.com/59027889/125184401-0a61dc00-e23d-11eb-9fe0-9e55ef31589c.png)
 
-
 ### Features
 
 1. Connect local or remote socket server.
@@ -31,7 +30,7 @@ Open [http://localhost:1234](http://localhost:1234) to view it in the browser.
 
 ### `yarn run build`
 
-Builds the app for production to the `build` folder.
+Builds the app for production to the `dist` folder.
 
 The build is minified and the filenames include the hashes.
 Your app is ready to be deployed!
