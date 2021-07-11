@@ -1,18 +1,24 @@
+import axios from 'axios';
 import io from 'socket.io-client';
 import setUpEditors from './setupEditor';
 
 const event = document.querySelector('[socket-event]');
+const searchBox = document.querySelector('[search-input]');
 const connectBtn = document.querySelector('[connect-btn]');
 const listener = document.querySelector('[socket-listener]');
 const newEventForm = document.querySelector('[new-event-form]');
 const newEventBtn = document.querySelector('[create-event-btn]');
-const connectionForm = document.querySelector('[connection-form]');
 const connectionUrl = document.querySelector('[local-server-url]');
+const connectionForm = document.querySelector('[connection-form]');
+const optionsTemplate = document.querySelector('[option-template]');
+const optionsContainer = document.querySelector('[option-container]');
 const responseContainer = document.querySelector('[json-responce-conatiner]');
 
-const { requestEditor, updateResponseEditor } = setUpEditors();
-
+let optionNodes;
+let options;
 let socket;
+
+const { requestEditor, updateResponseEditor } = setUpEditors();
 
 function getConnection(connectionUrl) {
   return io(connectionUrl);
@@ -68,7 +74,7 @@ newEventForm.addEventListener('submit', (e) => {
   }
 
   changeDom(newEventBtn, 'sending');
-  fireEvent(socket, event.value, data);
+  fireEvent(socket, event.innerHTML, data);
 });
 
 function fireEvent(socket, event, data) {
@@ -85,7 +91,77 @@ function listenEvent(socket, listenTo) {
   });
 }
 
-function changeDom(element, content = '', styles = {}) {
-  element.textContent = content;
+event.addEventListener('click', () => {
+  optionsContainer.classList.toggle('active');
+
+  searchBox.value = '';
+  filterList('');
+
+  if (optionsContainer.classList.contains('active')) {
+    searchBox.focus();
+  }
+});
+
+searchBox.addEventListener('keyup', function (e) {
+  filterList(e.target.value);
+});
+
+const filterList = (searchTerm) => {
+  searchTerm = searchTerm.toLowerCase();
+  optionNodes.forEach((option) => {
+    let value = option.innerText.toLowerCase();
+    if (value.indexOf(searchTerm) != -1) {
+      changeDom(option, '', { display: 'block' });
+    } else {
+      changeDom(option, '', { display: 'none' });
+    }
+  });
+};
+
+(async () => {
+  const { data } = await axios.get(
+    'https://socketapiserver.herokuapp.com/api/event'
+  );
+
+  options = data.data;
+
+  options.forEach((eve, key) => {
+    const eventName = eve.event;
+    optionsContainer.append(createOptions(eventName));
+  });
+  addClickEventListerToOptionList();
+})();
+
+function createOptions(value) {
+  const element = optionsTemplate.content.cloneNode(true);
+  const optiondiv = element.querySelector('[option]');
+  optiondiv.textContent = value;
+  return element;
+}
+
+function addClickEventListerToOptionList() {
+  const optionNodeList = document.querySelectorAll('[option]');
+  optionNodes = [...optionNodeList];
+  optionNodes.forEach((option) => {
+    option.addEventListener('click', () => {
+      const value = option.textContent;
+      event.innerHTML = value;
+      optionsContainer.classList.remove('active');
+      findListener(value);
+    });
+  });
+}
+
+function findListener(selectedEventValue) {
+  const listenerIndex = options.findIndex(
+    ({ event }) => event === selectedEventValue
+  );
+
+  if (listenerIndex >= 0) listener.value = options[listenerIndex].listener;
+}
+
+export function changeDom(element, content = '', styles = {}) {
+  if (content != '') element.textContent = content;
+
   Object.assign(element.style, styles);
 }
