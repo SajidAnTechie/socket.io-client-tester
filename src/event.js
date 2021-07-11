@@ -2,16 +2,16 @@ import axios from 'axios';
 import { changeDom } from './script';
 
 const addBtn = document.querySelector('[add-btn]');
-const event = document.querySelector('[add-event-input]');
+const newEvent = document.querySelector('[add-event-input]');
 const message = document.querySelector('[success-message]');
-const listener = document.querySelector('[add-listener-input]');
-const addNewEventForm = document.querySelector('[add-event-form]');
+const newListener = document.querySelector('[add-listener-input]');
+const addEventForm = document.querySelector('[add-event-form]');
 
-addNewEventForm.addEventListener('submit', async (e) => {
+addEventForm.addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  const eventVal = event.value;
-  const listenerVal = listener.value;
+  const eventVal = newEvent.value;
+  const listenerVal = newListener.value;
 
   if ([eventVal, listenerVal].includes('')) {
     return;
@@ -29,7 +29,7 @@ addNewEventForm.addEventListener('submit', async (e) => {
   if (response.status === 200) {
     changeDom(addBtn, 'save', { cursor: 'pointer', pointerEvents: 'auto' });
     message.classList.remove('d-none');
-    event.value = '';
-    listener.value = '';
+    newEvent.value = '';
+    newListener.value = '';
   }
 });
