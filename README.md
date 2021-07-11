@@ -6,7 +6,7 @@
 ![Screenshot 2021-07-11 at 09-55-16 Socket Client Tool](https://user-images.githubusercontent.com/59027889/125184401-0a61dc00-e23d-11eb-9fe0-9e55ef31589c.png)
 
 
-### features
+### Features
 
 1. Connect local or remote socket server.
 2. Select event with search filter.
