@@ -9,6 +9,7 @@ const addNewEventForm = document.querySelector('[add-event-form]');
 
 addNewEventForm.addEventListener('submit', async (e) => {
   e.preventDefault();
+
   const eventVal = event.value;
   const listenerVal = listener.value;
 
