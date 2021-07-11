@@ -25,7 +25,6 @@ addNewEventForm.addEventListener('submit', async (e) => {
     'https://socketapiserver.herokuapp.com/api/event',
     payload
   );
-  console.log(response);
   if (response.status === 200) {
     changeDom(addBtn, 'save', { cursor: 'pointer', pointerEvents: 'auto' });
     message.classList.remove('d-none');
