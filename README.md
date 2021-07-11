@@ -1,7 +1,15 @@
 ### Node version >= v12.20.0
 
 ### Overview
+
 ![socket-client-tester](https://user-images.githubusercontent.com/59027889/124382196-ec98f200-dce5-11eb-8e02-26055c850913.png)
+
+### features
+
+1. Connect local or remote socket server.
+2. Select event with search filter.
+3. Auto complete listener corresponding to selected event.
+4. Add new Event.
 
 ### Installation
 
