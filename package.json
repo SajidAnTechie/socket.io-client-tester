@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start:dev": "parcel serve ./src/*.html",
-    "build": "parcel build ./src/*.html --public-url ./",
+    "build": "parcel build ./src/*.html --public-url ./ --no-source-maps",
     "predeploy": "yarn run build",
     "deploy": "gh-pages -d dist"
   },
