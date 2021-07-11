@@ -7,8 +7,8 @@
   "author": "Sajid",
   "license": "MIT",
   "scripts": {
-    "start:dev": "parcel serve ./src/index.html",
-    "build": "parcel build ./src/index.html --public-url ./",
+    "start:dev": "parcel serve ./src/*.html",
+    "build": "parcel build ./src/*.html --public-url ./",
     "predeploy": "yarn run build",
     "deploy": "gh-pages -d build"
   },
@@ -17,6 +17,7 @@
     "@codemirror/commands": "^0.18.3",
     "@codemirror/lang-json": "^0.18.0",
     "@codemirror/view": "^0.18.17",
+    "axios": "^0.21.1",
     "socket.io-client": "^2.3.0"
   },
   "devDependencies": {

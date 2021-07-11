@@ -1,6 +1,6 @@
+import axios from 'axios';
 import io from 'socket.io-client';
 import setUpEditors from './setupEditor';
-import eventOptions from './eventOptions';
 
 const event = document.querySelector('[socket-event]');
 const searchBox = document.querySelector('[search-input]');
@@ -14,6 +14,7 @@ const optionsTemplate = document.querySelector('[option-template]');
 const optionsContainer = document.querySelector('[option-container]');
 const responseContainer = document.querySelector('[json-responce-conatiner]');
 
+let optionNodes;
 let options;
 let socket;
 
@@ -107,7 +108,7 @@ searchBox.addEventListener('keyup', function (e) {
 
 const filterList = (searchTerm) => {
   searchTerm = searchTerm.toLowerCase();
-  options.forEach((option) => {
+  optionNodes.forEach((option) => {
     let value = option.innerText.toLowerCase();
     if (value.indexOf(searchTerm) != -1) {
       changeDom(option, '', { display: 'block' });
@@ -117,14 +118,16 @@ const filterList = (searchTerm) => {
   });
 };
 
-(() => {
-  const options = [...eventOptions];
+(async () => {
+  const { data } = await axios.get(
+    'https://socketapiserver.herokuapp.com/api/event'
+  );
+
+  options = data.data;
 
   options.forEach((eve, key) => {
     const eventName = eve.event;
     optionsContainer.append(createOptions(eventName));
-    // const eventName = eve.event;
-    // event[key + 1] = new Option(eventName, eventName, false, false);
   });
   addClickEventListerToOptionList();
 })();
@@ -138,8 +141,8 @@ function createOptions(value) {
 
 function addClickEventListerToOptionList() {
   const optionNodeList = document.querySelectorAll('[option]');
-  options = [...optionNodeList];
-  options.forEach((option) => {
+  optionNodes = [...optionNodeList];
+  optionNodes.forEach((option) => {
     option.addEventListener('click', () => {
       const value = option.textContent;
       event.innerHTML = value;
@@ -150,7 +153,6 @@ function addClickEventListerToOptionList() {
 }
 
 function findListener(selectedEventValue) {
-  const options = [...eventOptions];
   const listenerIndex = options.findIndex(
     ({ event }) => event === selectedEventValue
   );
@@ -158,7 +160,7 @@ function findListener(selectedEventValue) {
   if (listenerIndex >= 0) listener.value = options[listenerIndex].listener;
 }
 
-function changeDom(element, content = '', styles = {}) {
+export function changeDom(element, content = '', styles = {}) {
   if (content != '') element.textContent = content;
 
   Object.assign(element.style, styles);

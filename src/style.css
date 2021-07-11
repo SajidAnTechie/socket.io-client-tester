@@ -23,6 +23,9 @@ h4 {
   font-size: 1.5rem;
   font-weight: lighter;
 }
+a {
+  text-decoration: none;
+}
 .border {
   border: 1px solid #d2d2d2;
   padding: 10px;
@@ -85,6 +88,13 @@ input[type='text']::placeholder {
 }
 .cm-focused {
   outline: none !important;
+}
+.success-message {
+  padding: 5px;
+  text-align: center;
+  background-color: #2ecc71;
+  color: #fff;
+  font-weight: 700;
 }
 
 /* Select container */
