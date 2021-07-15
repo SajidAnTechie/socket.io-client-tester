@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 const addBtn = document.querySelector('[add-btn]');
-const newEvent = document.querySelector('[add-event-input]');
 const message = document.querySelector('[success-message]');
-const newListener = document.querySelector('[add-listener-input]');
+const newEvent = document.querySelector('[add-event-input]');
 const addEventForm = document.querySelector('[add-event-form]');
+const newListener = document.querySelector('[add-listener-input]');
 
 addEventForm.addEventListener('submit', async (e) => {
   e.preventDefault();

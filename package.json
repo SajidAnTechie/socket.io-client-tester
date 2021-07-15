@@ -6,7 +6,7 @@
   "author": "Sajid",
   "license": "MIT",
   "scripts": {
-    "start:dev": "parcel serve ./src/*.html",
+    "start:dev": "parcel serve ./src/*.html --no-source-maps",
     "build": "parcel build ./src/*.html --public-url ./ --no-source-maps",
     "predeploy": "yarn run build",
     "deploy": "gh-pages -d dist"
