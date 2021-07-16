@@ -12,26 +12,38 @@ addEventForm.addEventListener('submit', async (e) => {
   const eventVal = newEvent.value;
   const listenerVal = newListener.value;
 
-  if ([eventVal, listenerVal].includes('')) {
-    return;
-  }
+  const isInputValid = validateInput([eventVal, listenerVal]);
+
+  if (!isInputValid) return;
+
   message.classList.add('d-none');
   changeDom(addBtn, 'saving', { cursor: 'not-allowed', pointerEvents: 'none' });
   const payload = {
     event: eventVal,
     listener: listenerVal,
   };
-  const response = await axios.post(
-    'https://socketapiserver.herokuapp.com/api/event',
-    payload
-  );
-  if (response.status === 200) {
-    changeDom(addBtn, 'save', { cursor: 'pointer', pointerEvents: 'auto' });
-    message.classList.remove('d-none');
-    newEvent.value = '';
-    newListener.value = '';
+  try {
+    const response = await axios.post(
+      'https://socketapiserver.herokuapp.com/api/event',
+      payload
+    );
+    if (response.status === 200) {
+      changeDom(addBtn, 'save', { cursor: 'pointer', pointerEvents: 'auto' });
+      message.classList.remove('d-none');
+      newEvent.value = '';
+      newListener.value = '';
+    }
+  } catch (err) {
+    alert(err);
   }
 });
+
+function validateInput(values) {
+  if (values.includes('')) {
+    return false;
+  }
+  return true;
+}
 
 function changeDom(element, content = '', styles = {}) {
   if (content != '') element.textContent = content;

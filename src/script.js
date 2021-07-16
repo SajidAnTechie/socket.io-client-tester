@@ -119,17 +119,21 @@ const filterList = (searchTerm) => {
 };
 
 (async () => {
-  const { data } = await axios.get(
-    'https://socketapiserver.herokuapp.com/api/event'
-  );
+  try {
+    const { data } = await axios.get(
+      'https://socketapiserver.herokuapp.com/api/event'
+    );
 
-  options = data.data;
+    options = data.data;
 
-  options.forEach((eve, key) => {
-    const eventName = eve.event;
-    optionsContainer.append(createOptions(eventName));
-  });
-  addClickEventListerToOptionList();
+    options.forEach((eve, key) => {
+      const eventName = eve.event;
+      optionsContainer.append(createOptions(eventName));
+    });
+    addClickEventListerToOptionList();
+  } catch (err) {
+    alert(err);
+  }
 })();
 
 function createOptions(value) {
