@@ -28,13 +28,14 @@ addEventForm.addEventListener('submit', async (e) => {
       payload
     );
     if (response.status === 200) {
-      changeDom(addBtn, 'save', { cursor: 'pointer', pointerEvents: 'auto' });
       message.classList.remove('d-none');
       newEvent.value = '';
       newListener.value = '';
     }
   } catch (err) {
     alert(err);
+  } finally {
+    changeDom(addBtn, 'save', { cursor: 'pointer', pointerEvents: 'auto' });
   }
 });
 
