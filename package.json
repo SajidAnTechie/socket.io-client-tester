@@ -1,9 +1,8 @@
 {
   "name": "socket.io-client-tool",
-  "homepage": "https://sajidantechie.github.io/socket.io-client-tester/",
   "version": "1.0.0",
-  "description": "socket.io-client-tool",
-  "author": "Sajid",
+  "description": "socket.io-client-tool for testing socket server",
+  "author": "Sajid Ansari",
   "license": "MIT",
   "scripts": {
     "start:dev": "parcel serve ./src/*.html --no-source-maps",
@@ -22,5 +21,18 @@
   "devDependencies": {
     "gh-pages": "^3.2.3",
     "parcel": "^2.0.0-beta.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SajidAnTechie/socket.io-client-tester.git"
+  },
+  "keywords": [
+    "socket",
+    "socket client",
+    "socket tester"
+  ],
+  "bugs": {
+    "url": "https://github.com/SajidAnTechie/socket.io-client-tester/issues"
+  },
+  "homepage":"https://github.com/SajidAnTechie/socket.io-client-tester"
 }
