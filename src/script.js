@@ -45,6 +45,7 @@ connectionForm.addEventListener('submit', (e) => {
       color: '#999',
       border: '1px solid #999',
     });
+    changeDom(newEventBtn, 'send');
     alert('Disconnected');
     socket.disconnect();
     sockets.close();
