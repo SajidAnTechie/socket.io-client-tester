@@ -86,6 +86,9 @@ input[type='text']::placeholder {
   font-size: 0.875rem;
   text-transform: capitalize;
 }
+.btn:active {
+  transform: scale(0.9);
+}
 .cm-focused {
   outline: none !important;
 }
