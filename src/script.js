@@ -24,43 +24,25 @@ function getConnection(connectionUrl) {
   return io(connectionUrl);
 }
 
+window.addEventListener('load', function() {
+  
+  changeDom(connectBtn, 'connecting');
+
+  socket = getConnection(connectionUrl.value);
+
+  handleSocketConnection(socket);
+
+})
+
 connectionForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
   changeDom(connectBtn, 'connecting');
 
   socket = getConnection(connectionUrl.value);
+  
+  handleSocketConnection(socket);
 
-  socket.on('connect', () => {
-    changeDom(connectBtn, 'connected', {
-      backgroundColor: '#2ecc71',
-      color: '#fff',
-      border: '0',
-    });
-  });
-
-  socket.on('disconnect', () => {
-    changeDom(connectBtn, 'connect', {
-      backgroundColor: 'transparent',
-      color: '#999',
-      border: '1px solid #999',
-    });
-    changeDom(newEventBtn, 'send');
-    alert('Disconnected');
-    socket.disconnect();
-    sockets.close();
-  });
-
-  socket.on('connect_error', (error) => {
-    changeDom(connectBtn, 'connect', {
-      backgroundColor: 'transparent',
-      color: '#999',
-      border: '1px solid #999',
-    });
-    alert('Couldnt connect');
-    socket.disconnect();
-    socket.close();
-  });
 });
 
 newEventForm.addEventListener('submit', (e) => {
@@ -169,4 +151,38 @@ function changeDom(element, content = '', styles = {}) {
   if (content != '') element.textContent = content;
 
   Object.assign(element.style, styles);
+}
+
+
+function handleSocketConnection(socket) {
+  socket.on('connect', () => {
+    changeDom(connectBtn, 'connected', {
+      backgroundColor: '#2ecc71',
+      color: '#fff',
+      border: '0',
+    });
+  });
+
+  socket.on('disconnect', () => {
+    changeDom(connectBtn, 'connect', {
+      backgroundColor: 'transparent',
+      color: '#999',
+      border: '1px solid #999',
+    });
+    changeDom(newEventBtn, 'send');
+    alert('Disconnected');
+    socket.disconnect();
+    sockets.close();
+  });
+
+  socket.on('connect_error', (error) => {
+    changeDom(connectBtn, 'connect', {
+      backgroundColor: 'transparent',
+      color: '#999',
+      border: '1px solid #999',
+    });
+    alert('Couldnt connect');
+    socket.disconnect();
+    socket.close();
+  });
 }
