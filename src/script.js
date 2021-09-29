@@ -172,7 +172,7 @@ function handleSocketConnection(socket) {
     changeDom(newEventBtn, 'send');
     alert('Disconnected');
     socket.disconnect();
-    sockets.close();
+    socket.close();
   });
 
   socket.on('connect_error', (error) => {
