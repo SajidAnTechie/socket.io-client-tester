@@ -13,6 +13,31 @@
     <div class="container">
       <header class="my-2">Socket.io Client Tool</header>
       <h4 class="my-3">Connect</h4>
+      <div >
+        <input
+          type="radio"
+          name="url"
+          id="local"
+          placeholder="eg: http://localhost:8080/"
+          value="http://localhost:3007/"
+          local-server-url-check
+          required
+          class="mr-2"
+          checked
+        >
+        <label for="local">Local Server </label>
+        <input
+          type="radio"
+          name="url"
+          id="server"
+          value="https://soc.poker.lftechnology.com:8443/"
+          remote-server-url-check
+          required
+          class="mr-2"
+          
+        >
+        <label for="server">Remote Server</span>
+      </div>
       <form connection-form class="my-3">
         <div class="input-group">
           <input
