@@ -13,6 +13,8 @@ const connectionForm = document.querySelector('[connection-form]');
 const optionsTemplate = document.querySelector('[option-template]');
 const optionsContainer = document.querySelector('[option-container]');
 const responseContainer = document.querySelector('[json-responce-conatiner]');
+const localConnectionBtn = document.querySelector('[local-server-url-check]');
+const remoteConnectionBtn = document.querySelector('[remote-server-url-check]');
 
 let optionNodes;
 let options;
@@ -34,6 +36,23 @@ window.addEventListener('load', function() {
 
 })
 
+localConnectionBtn.addEventListener('click',(e)=>{
+  connectionUrl.value=e.target.value;
+  changeDom(connectBtn, 'connect', {
+    backgroundColor: 'transparent',
+    color: '#999',
+    border: '1px solid #999',
+  });
+});
+
+remoteConnectionBtn.addEventListener('click',(e)=>{
+  connectionUrl.value=e.target.value;
+  changeDom(connectBtn, 'connect', {
+    backgroundColor: 'transparent',
+    color: '#999',
+    border: '1px solid #999',
+  });
+});
 connectionForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
@@ -57,6 +76,7 @@ newEventForm.addEventListener('submit', (e) => {
   }
 
   changeDom(newEventBtn, 'sending');
+  responseContainer.classList.add('d-none');
   fireEvent(socket, event.innerHTML, data);
 });
 
