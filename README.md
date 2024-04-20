@@ -20,6 +20,8 @@
 git clone https://github.com/SajidAnTechie/socket.io-client-tester.git
 
 cd socket.io-client-tester
+
+yarn install
 ```
 
 In the project directory, you can run:
